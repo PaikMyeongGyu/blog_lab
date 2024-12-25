@@ -1,5 +1,6 @@
 package com.security.spring_security.auth.resolver;
 
+import com.security.spring_security.auth.annotation.Admin;
 import com.security.spring_security.auth.annotation.User;
 import com.security.spring_security.auth.dto.LoginUser;
 import com.security.spring_security.auth.util.TokenUtils;
@@ -39,7 +40,7 @@ public class AdminArgumentResolver implements HandlerMethodArgumentResolver {
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.hasParameterAnnotation(User.class);
+        return parameter.hasParameterAnnotation(Admin.class);
     }
 
     @Override
@@ -52,14 +53,14 @@ public class AdminArgumentResolver implements HandlerMethodArgumentResolver {
         accessToken = tokenUtils.extractBearerToken(accessToken);
 
         Claims claims = tokenUtils.getClaimsByAccessToken(accessToken);
-        Long userId = Long.parseLong(claims.get("userId").toString());
-        String authority = claims.get("authority").toString();
+        Long userId = tokenUtils.getUserIdFromClaims(claims);
+        String authority = tokenUtils.getAuthorityFromClaims(claims);
         adminValidation(authority);
         return new LoginUser(userId, authority);
     }
 
     private void adminValidation(String authority) {
-        if (!authority.equals(ADMIN.toString())) {
+        if (!authority.equals(ADMIN)) {
             throw new AuthException(INVALID_REQUEST);
         }
     }
