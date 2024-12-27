@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/blog.iml" filepath="$PROJECT_DIR$/.idea/blog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/selectWithIndex.main.iml" filepath="$PROJECT_DIR$/.idea/modules/selectWithIndex.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/selectWithIndex.test.iml" filepath="$PROJECT_DIR$/.idea/modules/selectWithIndex.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring_security.main.iml" filepath="$PROJECT_DIR$/.idea/modules/spring_security.main.iml" />
     </modules>
   </component>

@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/DatabaseSelectWithIndex" />
+    <file type="web" url="file://$PROJECT_DIR$/selectWithIndex" />
     <file type="web" url="file://$PROJECT_DIR$/spring_security" />
   </component>
   <component name="ProjectRootManager">

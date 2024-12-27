@@ -30,7 +30,6 @@ public class AuthController {
 
     @PostMapping("/reissue")
     public ResponseEntity<TokenResponse> reissue(@ReIssue TokenResponse tokenResponse) {
-
         return ResponseEntity.ok(tokenResponse);
     }
 
