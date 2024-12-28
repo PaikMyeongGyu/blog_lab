@@ -7,9 +7,11 @@ import com.logging.shortenurl.domain.ShortenUrlRepository;
 import com.logging.shortenurl.presentation.ShortenUrlCreateRequestDto;
 import com.logging.shortenurl.presentation.ShortenUrlCreateResponseDto;
 import com.logging.shortenurl.presentation.ShortenUrlInformationDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class SimpleShortenUrlService {
 
@@ -29,13 +31,13 @@ public class SimpleShortenUrlService {
         // 4. ShortenUrl을 ShortenUrlCreateResponseDto로 변환하여 반환
         String originalUrl = shortenUrlCreateRequestDto.getOriginalUrl();
         String shortenUrlKey = getUniqueShortenUrlKey();
+        log.debug("getUniqueShortenUrlKey: {}", shortenUrlKey); // 실제로 오류 없이 제대로 데이터가 나오는 지를 확인할 수 있음.
 
         ShortenUrl shortenUrl = new ShortenUrl(originalUrl, shortenUrlKey);
         shortenUrlRepository.saveShortenUrl(shortenUrl);
+        log.info("shortenUrl 생성: {}", shortenUrl); // 새로 생성된 것들에 대해서 확인을 함.
 
-        ShortenUrlCreateResponseDto shortenUrlCreateResponseDto
-                = new ShortenUrlCreateResponseDto(shortenUrl);
-
+        ShortenUrlCreateResponseDto shortenUrlCreateResponseDto = new ShortenUrlCreateResponseDto(shortenUrl);
         return shortenUrlCreateResponseDto;
     }
 
@@ -45,8 +47,11 @@ public class SimpleShortenUrlService {
         while(count++ < MAX_RETRY_COUNT) {
             String shortenUrlKey = ShortenUrl.generateShortenUrlKey();
             ShortenUrl shortenUrl = shortenUrlRepository.findShortenUrlByShortenUrlKey(shortenUrlKey);
+
             if (null == shortenUrl)
                 return shortenUrlKey;
+
+            log.warn("단축 URL 재시도! 재시도 횟수 : {}", count + 1);
         }
         throw new LackOfShortenUrlKeyException();
     }
@@ -55,7 +60,7 @@ public class SimpleShortenUrlService {
         ShortenUrl shortenUrl = shortenUrlRepository.findShortenUrlByShortenUrlKey(shortenUrlKey);
 
         if (null == shortenUrl) {
-            throw new NotFoundShortenUrlException();
+            throw new NotFoundShortenUrlException("단축 URL을 생성하지 못했습니다. shortenUrlKey=" + shortenUrlKey);
         }
 
         ShortenUrlInformationDto shortenUrlInformationDto = new ShortenUrlInformationDto(shortenUrl);
@@ -66,7 +71,7 @@ public class SimpleShortenUrlService {
         ShortenUrl shortenUrl = shortenUrlRepository.findShortenUrlByShortenUrlKey(shortenUrlKey);
 
         if (null == shortenUrl) {
-            throw new NotFoundShortenUrlException();
+            throw new NotFoundShortenUrlException("단축 URL을 생성하지 못했습니다. shortenUrlKey=" + shortenUrlKey);
         }
 
         shortenUrl.increaseRedirectCount();

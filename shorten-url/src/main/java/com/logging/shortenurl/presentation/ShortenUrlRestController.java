@@ -2,6 +2,7 @@ package com.logging.shortenurl.presentation;
 
 import com.logging.shortenurl.application.SimpleShortenUrlService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import java.net.URISyntaxException;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
+@Slf4j
 @RestController
 public class ShortenUrlRestController {
 
@@ -31,6 +33,8 @@ public class ShortenUrlRestController {
     public ResponseEntity<?> createShortenUrl(
             @Valid @RequestBody ShortenUrlCreateRequestDto shortenUrlCreateRequestDto
     ) {
+        // 해당 요구에 대해서 완전하게 기록을 할 수 있음,
+        log.info("shortenUrlCreateRequestDto {}", shortenUrlCreateRequestDto);
         ShortenUrlCreateResponseDto shortenUrlCreateResponseDto =
                 simpleShortenUrlService.generateShortenUrl(shortenUrlCreateRequestDto);
 
