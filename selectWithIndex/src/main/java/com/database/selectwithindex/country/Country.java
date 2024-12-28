@@ -26,8 +26,12 @@ public class Country {
     @Column(length = 20)
     private String city;
 
-    public Country(String country, String city) {
+    @Column
+    private Integer age;
+
+    public Country(String country, String city, Integer age) {
         this.country = country;
         this.city = city;
+        this.age = age;
     }
 }
