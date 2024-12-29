@@ -24,6 +24,7 @@ public class UserService {
 
         // passwordValidation 추후 적용 필요
         // nickNameValidation 추후 적용 필요
+        passwordValidation(password);
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         userJpaRepository.save(Users.createNewUser(username, email, hashedPassword));
     }

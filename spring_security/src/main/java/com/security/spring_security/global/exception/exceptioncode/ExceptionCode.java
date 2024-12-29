@@ -18,8 +18,8 @@ public enum ExceptionCode {
     USER_NOT_FOUND(NOT_FOUND, 1000, "해당 정보와 일치하는 계정이 없습니다."),
     USER_NOT_FOUND_WITH_EMAIL(NOT_FOUND, 1001, "이메일 정보와 일치하는 계정이 없습니다."),
     USER_NOT_FOUND_WITH_USERNAME(NOT_FOUND, 1002, "유저 닉네임과 일치하는 계정이 없습니다."),
-    USER_DUPLICATE_WITH_EMAIL(NOT_FOUND, 1003, "해당 이메일로 가입된 계정이 있습니다."),
-    USER_DUPLICATE_WITH_USERNAME(NOT_FOUND, 1004, "해당 닉네임으로 가입된 계정이 있습니다."),
+    USER_DUPLICATE_WITH_EMAIL(BAD_REQUEST, 1003, "해당 이메일로 가입된 계정이 있습니다."),
+    USER_DUPLICATE_WITH_USERNAME(BAD_REQUEST, 1004, "해당 닉네임으로 가입된 계정이 있습니다."),
     PASSWORD_VALIDATION(BAD_REQUEST, 1005, "패스워드가 빈칸 없음, 8-15 글자 사이, 문자, 숫자, 특수문자 포함 조건을 만족하지 않습니다"),
     SESSION_NOT_FOUND(BAD_REQUEST, 1006, "로그인을 다시해주세요."),
 
