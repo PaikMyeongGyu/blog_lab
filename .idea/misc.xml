@@ -4,6 +4,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/DatabaseSelectWithIndex" />
     <file type="web" url="file://$PROJECT_DIR$/geography" />
+    <file type="web" url="file://$PROJECT_DIR$/search" />
     <file type="web" url="file://$PROJECT_DIR$/selectWithIndex" />
     <file type="web" url="file://$PROJECT_DIR$/spring_security" />
   </component>
