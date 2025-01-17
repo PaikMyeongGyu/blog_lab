@@ -9,8 +9,7 @@ CREATE TABLE IF NOT EXISTS `attractions` (
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
-CREATE FULLTEXT INDEX idx_title_addr1 ON attractions (title, addr1);
-
+CREATE FULLTEXT INDEX idx_title_addr1 ON attractions (title, addr1) WITH PARSER ngram;
 
 CREATE TABLE IF NOT EXISTS `houseinfos` (
                                             `apt_seq` VARCHAR(20) NOT NULL,
@@ -31,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `houseinfos` (
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
-CREATE FULLTEXT INDEX idx_road_nm_apt_nm ON houseinfos (road_nm, apt_nm);
+CREATE FULLTEXT INDEX idx_road_nm_apt_nm ON houseinfos (road_nm, apt_nm) WITH PARSER ngram;
 
 CREATE TABLE IF NOT EXISTS `housedeals` (
                                             `no` INT NOT NULL AUTO_INCREMENT,
@@ -53,4 +52,4 @@ CREATE TABLE IF NOT EXISTS `housedeals` (
     DEFAULT CHARACTER SET = utf8mb4
     COLLATE = utf8mb4_0900_ai_ci;
 
-CREATE FULLTEXT INDEX idx_apt_seq ON housedeals(apt_seq);
+CREATE FULLTEXT INDEX idx_apt_seq ON housedeals(apt_seq) WITH PARSER ngram;
