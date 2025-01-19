@@ -2,15 +2,16 @@ package com.chat.websocket_chatting.vo;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class ChatMessageVO {
-    private int messageId;
-    private int studyNumber;
+    private Long chatMessageId;
+    private Long studyId;
+    private Long userId;
     private String messageContent;
-    private String messageRegisterDate;
-    private String userId;
-    private String userName;
-    private int unreadCount;
+    private LocalDateTime messageDate;
+    private Long unreadCount;
 
     // DB에 없는 필요한 변수
     private String type;

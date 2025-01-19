@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/selectWithIndex.main.iml" filepath="$PROJECT_DIR$/.idea/modules/selectWithIndex.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/selectWithIndex.test.iml" filepath="$PROJECT_DIR$/.idea/modules/selectWithIndex.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/spring_security.main.iml" filepath="$PROJECT_DIR$/.idea/modules/spring_security.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/websocket_chatting.main.iml" filepath="$PROJECT_DIR$/.idea/modules/websocket_chatting.main.iml" />
     </modules>
   </component>
 </project>

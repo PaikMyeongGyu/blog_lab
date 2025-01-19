@@ -4,9 +4,10 @@ import lombok.Data;
 
 @Data
 public class StudyMemberVO {
-    private int studyNumber;
-    private String userId;
-    private String userName;
+    private Long studyMemberId;
+    private Long studyId;
+    private Long userId;
+    private String userNickname;
     private String authRole;
-    private int messageCount;
+    private Long messageCount;
 }

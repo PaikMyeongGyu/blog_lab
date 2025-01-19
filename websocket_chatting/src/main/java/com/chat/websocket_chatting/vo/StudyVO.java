@@ -2,15 +2,16 @@ package com.chat.websocket_chatting.vo;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
-public class StudyGroupVO {
-    private int studyNumber;
+public class StudyVO {
+    private Long studyId;
     private String studyTitle;
-    private String userId;
-    private String studyDate;
-    private String userName;
+    private Long studyLeaderId;
+    private LocalDateTime studyDate;
 
     // DB에는 없는 스터디장 설정 확인을 위한 변수
     private String authRole;
-    private int messageCount;
+    private Long messageCount;
 }

@@ -4,8 +4,9 @@ import lombok.Data;
 
 @Data
 public class UnreadMemberVO {
-    private int messageId;
-    private String userId;
-    private int readCheck;
-    private int studyNumber;
+    private Long unreadMessageId;
+    private Long userId;
+    private Long studyId;
+
+    private Boolean readCheck;
 }
