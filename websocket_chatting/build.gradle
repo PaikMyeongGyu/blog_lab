@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'war'
     id 'org.springframework.boot' version '3.4.1'
     id 'io.spring.dependency-management' version '1.1.7'
 }
@@ -18,36 +19,15 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
 
-    // MyBatis
-    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
-
-    // MySQL Driver
-    runtimeOnly 'com.mysql:mysql-connector-j'
-
-    // JSP with Jakarta EE
-    implementation 'jakarta.servlet:jakarta.servlet-api:6.0.0'
-    implementation 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.0.0'
-    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:10.1.14'
-
-    // WebJars
-    implementation 'org.webjars.bower:jquery:3.3.1'
-    implementation 'org.webjars:sockjs-client:1.1.2'
-    implementation 'org.webjars:webjars-locator:0.30'
-
-    // Lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    // Spring Boot DevTools
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
-    // Testing
+    runtimeOnly 'com.h2database:h2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.4'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
