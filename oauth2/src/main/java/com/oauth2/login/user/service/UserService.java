@@ -1,5 +1,6 @@
 package com.oauth2.login.user.service;
 
+import com.oauth2.login.auth.domain.UserTokens;
 import com.oauth2.login.common.exception.ExceptionCode;
 import com.oauth2.login.common.exception.SocialLoginException;
 import com.oauth2.login.user.domain.User;
@@ -17,6 +18,7 @@ import static com.oauth2.login.common.exception.ExceptionCode.INVALID_REQUEST;
 public class UserService {
     private final UserJpaRepository userJpaRepository;
 
+    @Transactional(readOnly = true)
     public User findUserBySocialId(String socialId) {
         return userJpaRepository
                 .findBySocialLoginId(socialId)

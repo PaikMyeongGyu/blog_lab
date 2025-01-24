@@ -3,6 +3,9 @@ package com.oauth2.login.common.utils;
 import lombok.NoArgsConstructor;
 import org.slf4j.helpers.MessageFormatter;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 import static lombok.AccessLevel.PRIVATE;
 
 @NoArgsConstructor(access = PRIVATE)
@@ -16,5 +19,9 @@ public class StringUtils {
      */
     public static String format(String format, Object... objects) {
         return MessageFormatter.arrayFormat(format, objects).getMessage();
+    }
+
+    public static String encodeString(String str) {
+        return URLEncoder.encode(str, StandardCharsets.UTF_8);
     }
 }
