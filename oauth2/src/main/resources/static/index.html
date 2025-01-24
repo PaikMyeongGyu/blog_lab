@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google OAuth2 Login Test</title>
+</head>
+<body>
+<h1>Google OAuth2 Login Test</h1>
+<button id="loginBtn">Login with Google</button>
+
+<script>
+    document.getElementById("loginBtn").addEventListener("click", function () {
+        window.location.href = "http://localhost:8080/login/oauth2";
+    });
+</script>
+</body>
+</html>

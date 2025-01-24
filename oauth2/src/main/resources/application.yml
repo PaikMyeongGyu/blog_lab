@@ -10,5 +10,6 @@ oauth2:
     token-uri: ${GOOGLE_TOKEN_URI}
     resource-uri: ${GOOGLE_RESOURCE_URI}
     scope:
+     - openid
      - email
      - profile
