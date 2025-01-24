@@ -2,6 +2,12 @@ spring:
   application:
     name: oauth2
 
+  auth:
+    jwt:
+      secret-key: ${SECRET_KEY}
+      access-token-expiry: ${ACCESS_TOKEN_EXPIRY}
+      refresh-token-expiry: ${REFRESH_TOKEN_EXPIRY}
+
 oauth2:
   google:
     client-id: ${GOOGLE_CLIENT_ID}

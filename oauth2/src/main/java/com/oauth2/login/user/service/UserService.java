@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 import static com.oauth2.login.common.exception.ExceptionCode.INVALID_REQUEST;
 
 
@@ -19,10 +21,8 @@ public class UserService {
     private final UserJpaRepository userJpaRepository;
 
     @Transactional(readOnly = true)
-    public User findUserBySocialId(String socialId) {
-        return userJpaRepository
-                .findBySocialLoginId(socialId)
-                .orElseThrow(() -> new SocialLoginException(INVALID_REQUEST));
+    public Optional<User> findUserBySocialId(String socialId) {
+        return userJpaRepository.findBySocialLoginId(socialId);
     }
 
     @Transactional
