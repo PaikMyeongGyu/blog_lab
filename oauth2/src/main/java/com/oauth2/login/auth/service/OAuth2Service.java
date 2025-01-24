@@ -24,8 +24,8 @@ public class OAuth2Service {
     private final RefreshTokenRepository refreshTokenRepository;
     private final UserService userService;
 
-    public UserTokens login(LoginRequest loginRequest) {
-        var userCreateOrLoginRequest = googleOAuthProvider.getUserInfoByGoogle(loginRequest.getCode());
+    public UserTokens login(String code) {
+        var userCreateOrLoginRequest = googleOAuthProvider.getUserInfoByGoogle(code);
 
         User user = findOrCreateUser(userCreateOrLoginRequest);
 
@@ -64,14 +64,19 @@ public class OAuth2Service {
     private User findOrCreateUser(UserCreateOrLoginRequest request) {
         return userService
                 .findUserBySocialId(request.idToken())
-                .orElseGet(() ->
-                        User.builder()
-                                .socialLoginId(request.idToken())
-                                .email(request.email())
-                                .name(request.name())
-                                .nickname(request.nickname())
-                                .profileUri(request.profileUri())
-                                .build()
-                );
+                .orElseGet(() -> createUser(request));
+    }
+
+    private User createUser(UserCreateOrLoginRequest request) {
+        User user = User.builder()
+                .socialLoginId(request.idToken())
+                .email(request.email())
+                .name(request.name())
+                .nickname(request.nickname())
+                .profileUri(request.profileUri())
+                .build();
+
+        userService.saveUser(user);
+        return user;
     }
 }

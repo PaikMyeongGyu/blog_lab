@@ -24,7 +24,7 @@ public class User extends BaseTimeEntity {
     @Column(name = "user_id")
     private Long id;
 
-    @Column(name = "user_social_login_id", nullable = false, unique = true)
+    @Column(name = "user_social_login_id", nullable = false, columnDefinition = "TEXT")
     private String socialLoginId;
 
     @Column(name = "user_email", length = 40, unique = true)

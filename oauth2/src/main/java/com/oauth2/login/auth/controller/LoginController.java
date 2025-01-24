@@ -59,10 +59,10 @@ public class LoginController {
 
     @GetMapping("/code/google")
     public ResponseEntity<AccessTokenResponse> handleGoogleCallback(
-            @RequestBody LoginRequest loginRequest,
+            @RequestParam("code") String code,
             HttpServletResponse response
     ) {
-        UserTokens userTokens = oAuth2Service.login(loginRequest);
+        UserTokens userTokens = oAuth2Service.login(code);
 
         ResponseCookie cookie = ResponseCookie.from("refresh-token", userTokens.getRefreshToken())
                 .maxAge(refreshTokenExpiry)

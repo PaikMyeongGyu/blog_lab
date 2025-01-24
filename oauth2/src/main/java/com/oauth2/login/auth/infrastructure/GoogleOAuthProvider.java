@@ -66,7 +66,7 @@ public class GoogleOAuthProvider {
         Map<String, Object> userInfo = userInfoResponse.getBody();
         String email = (String) userInfo.get("email");
         String name = (String) userInfo.get("name");
-        String nickname = RandomStringUtils.randomNumeric(20);
+        String nickname = RandomStringUtils.randomAlphanumeric(20);
         String picture = (String) userInfo.get("picture");
 
         return new UserCreateOrLoginRequest(idToken, email, name, nickname, picture);

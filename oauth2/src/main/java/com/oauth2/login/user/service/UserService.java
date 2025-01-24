@@ -26,6 +26,11 @@ public class UserService {
     }
 
     @Transactional
+    public void saveUser(User user) {
+        userJpaRepository.save(user);
+    }
+
+    @Transactional
     public void modifyUser(User user, UserUpdateRequest updateRequest) {
         user.update(
                 updateRequest.name(),
