@@ -3,7 +3,6 @@ package com.oauth2.login.auth.infrastructure;
 import com.oauth2.login.user.domain.request.UserCreateOrLoginRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
@@ -54,7 +53,6 @@ public class GoogleOAuthProvider {
         Map<String, Object> responseBody = response.getBody();
 
         String accessToken = (String) responseBody.get("access_token");
-        String idToken = (String) responseBody.get("id_token");
 
         HttpHeaders userInfoHeaders = new HttpHeaders();
         userInfoHeaders.setBearerAuth(accessToken);
@@ -69,7 +67,7 @@ public class GoogleOAuthProvider {
         String nickname = RandomStringUtils.randomAlphanumeric(20);
         String picture = (String) userInfo.get("picture");
 
-        return new UserCreateOrLoginRequest(idToken, email, name, nickname, picture);
+        return new UserCreateOrLoginRequest(email, name, nickname, picture);
     }
 
 }

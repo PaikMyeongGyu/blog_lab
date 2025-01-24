@@ -63,13 +63,12 @@ public class OAuth2Service {
 
     private User findOrCreateUser(UserCreateOrLoginRequest request) {
         return userService
-                .findUserBySocialId(request.idToken())
+                .findUserByEmail(request.email())
                 .orElseGet(() -> createUser(request));
     }
 
     private User createUser(UserCreateOrLoginRequest request) {
         User user = User.builder()
-                .socialLoginId(request.idToken())
                 .email(request.email())
                 .name(request.name())
                 .nickname(request.nickname())

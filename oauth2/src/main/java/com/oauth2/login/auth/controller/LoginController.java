@@ -6,6 +6,7 @@ import com.oauth2.login.auth.domain.response.AccessTokenResponse;
 import com.oauth2.login.auth.service.OAuth2Service;
 import com.oauth2.login.common.utils.StringUtils;
 import com.oauth2.login.user.service.UserService;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,7 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.net.URI;
 
 import static com.oauth2.login.common.utils.StringUtils.encodeString;
 
@@ -62,18 +64,24 @@ public class LoginController {
             @RequestParam("code") String code,
             HttpServletResponse response
     ) {
+        // 로그인 처리 및 UserTokens 생성
         UserTokens userTokens = oAuth2Service.login(code);
 
-        ResponseCookie cookie = ResponseCookie.from("refresh-token", userTokens.getRefreshToken())
-                .maxAge(refreshTokenExpiry)
-//                .secure(true)
-                .httpOnly(true)
-                .sameSite("None")
-                .domain("localhost")
-                .path("/")
-                .build();
+        Cookie cookie = new Cookie("refresh-token", userTokens.getRefreshToken());
+        cookie.setMaxAge(Math.toIntExact(refreshTokenExpiry)); // 쿠키 만료 시간 설정 (초 단위)
+        cookie.setHttpOnly(true); // JavaScript 접근 금지
+        cookie.setSecure(false); // HTTPS 환경에서 true로 변경
+        cookie.setPath("/"); // 쿠키 경로
+        cookie.setDomain("localhost"); // 로컬 환경 도메인 설정
 
-        response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
+        response.addCookie(cookie);
+        response.addHeader("Set-Cookie", String.format(
+                "refresh-token=%s; Max-Age=%d; Path=/; Domain=%s; HttpOnly; SameSite=None",
+                userTokens.getRefreshToken(),
+                refreshTokenExpiry,
+                "localhost"
+        ));
+
         return ResponseEntity.ok(new AccessTokenResponse(userTokens.getAccessToken()));
     }
 

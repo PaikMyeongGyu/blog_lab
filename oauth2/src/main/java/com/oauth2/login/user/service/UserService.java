@@ -20,9 +20,9 @@ import static com.oauth2.login.common.exception.ExceptionCode.INVALID_REQUEST;
 public class UserService {
     private final UserJpaRepository userJpaRepository;
 
-    @Transactional(readOnly = true)
-    public Optional<User> findUserBySocialId(String socialId) {
-        return userJpaRepository.findBySocialLoginId(socialId);
+    @Transactional
+    public Optional<User> findUserByEmail(String email) {
+        return userJpaRepository.findByEmail(email);
     }
 
     @Transactional
