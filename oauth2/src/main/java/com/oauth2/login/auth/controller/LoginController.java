@@ -15,7 +15,6 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.net.URI;
 
 import static com.oauth2.login.common.utils.StringUtils.encodeString;
 
@@ -64,23 +63,17 @@ public class LoginController {
             @RequestParam("code") String code,
             HttpServletResponse response
     ) {
+        System.out.println("안녕하세요");
         // 로그인 처리 및 UserTokens 생성
         UserTokens userTokens = oAuth2Service.login(code);
 
         Cookie cookie = new Cookie("refresh-token", userTokens.getRefreshToken());
-        cookie.setMaxAge(Math.toIntExact(refreshTokenExpiry)); // 쿠키 만료 시간 설정 (초 단위)
-        cookie.setHttpOnly(true); // JavaScript 접근 금지
-        cookie.setSecure(false); // HTTPS 환경에서 true로 변경
-        cookie.setPath("/"); // 쿠키 경로
-        cookie.setDomain("localhost"); // 로컬 환경 도메인 설정
+        cookie.setMaxAge(Math.toIntExact(refreshTokenExpiry));
+        cookie.setHttpOnly(true);
+        cookie.setSecure(false);
+        cookie.setPath("/");
 
         response.addCookie(cookie);
-        response.addHeader("Set-Cookie", String.format(
-                "refresh-token=%s; Max-Age=%d; Path=/; Domain=%s; HttpOnly; SameSite=None",
-                userTokens.getRefreshToken(),
-                refreshTokenExpiry,
-                "localhost"
-        ));
 
         return ResponseEntity.ok(new AccessTokenResponse(userTokens.getAccessToken()));
     }
