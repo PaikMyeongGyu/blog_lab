@@ -1,10 +1,13 @@
-package com.search.search.board;
+package com.search.search.board.domain;
 
-import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
-
+import static com.search.search.board.domain.BoardStatus.PUBLISHED;
+import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PROTECTED;
+
+import jakarta.persistence.*;
+
+import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor(access = PROTECTED)
@@ -26,8 +29,17 @@ public class BoardDescription {
     @Column(name = "board_id", nullable = false)
     private Long boardId;
 
-    public BoardDescription(String description, Long boardId) {
+    @Enumerated(STRING)
+    @Column(name = "board_description_status", nullable = false)
+    private BoardStatus status;
+
+    private BoardDescription(String description, Long boardId, BoardStatus status) {
         this.description = description;
         this.boardId = boardId;
+        this.status = status;
+    }
+
+    public static BoardDescription createDescription(String description, Long boardId) {
+        return new BoardDescription(description, boardId, PUBLISHED);
     }
 }

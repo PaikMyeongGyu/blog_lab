@@ -3,7 +3,6 @@ package com.oauth2.login.auth.service;
 import com.oauth2.login.auth.JwtUtil;
 import com.oauth2.login.auth.domain.RefreshToken;
 import com.oauth2.login.auth.domain.UserTokens;
-import com.oauth2.login.auth.domain.request.LoginRequest;
 import com.oauth2.login.auth.infrastructure.GoogleOAuthProvider;
 import com.oauth2.login.auth.repository.RefreshTokenRepository;
 import com.oauth2.login.common.exception.ExceptionCode;

@@ -1,10 +1,11 @@
-package com.search.search.board;
-
-import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
+package com.search.search.board.domain;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PROTECTED;
+
+import jakarta.persistence.*;
+
+import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor(access = PROTECTED)
