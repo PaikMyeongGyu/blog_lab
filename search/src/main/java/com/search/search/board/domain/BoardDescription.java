@@ -42,4 +42,8 @@ public class BoardDescription {
     public static BoardDescription createDescription(String description, Long boardId) {
         return new BoardDescription(description, boardId, PUBLISHED);
     }
+
+    public void updateDescription(String newDescription) {
+        this.description = newDescription;
+    }
 }

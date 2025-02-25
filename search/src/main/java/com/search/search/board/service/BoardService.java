@@ -28,4 +28,26 @@ public class BoardService {
         boardDescriptionJpaRepository.save(boardDescription);
         return board.getId();
     }
+
+    @Transactional
+    public void updateBoard(Long boardId, String title, String description, String author) {
+        Board board = getBoard(boardId);
+        board.updateTitle(title);
+        board.updateAuthor(author);
+        boardJpaRepository.save(board);
+
+        BoardDescription boardDescription = getDescription(boardId);
+        boardDescription.updateDescription(description);
+        boardDescriptionJpaRepository.save(boardDescription);
+    }
+
+    private Board getBoard(Long boardId) {
+        return boardJpaRepository.findById(boardId)
+                .orElseThrow(() -> new RuntimeException("존재하지 않는 게시글 번호입니다."));
+    }
+
+    private BoardDescription getDescription(Long boardId) {
+        return boardDescriptionJpaRepository.findByBoardId(boardId)
+                .orElseThrow(() -> new RuntimeException("존재하지 않는 게시글 번호입니다."));
+    }
 }

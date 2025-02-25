@@ -41,4 +41,12 @@ public class Board {
     public static Board newBoard(String title, String author) {
         return new Board(title, author, PUBLISHED);
     }
+
+    public void updateTitle(String newTitle) {
+        this.title = newTitle;
+    }
+
+    public void updateAuthor(String newAuthor) {
+        this.author = newAuthor;
+    }
 }
