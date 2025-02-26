@@ -1,14 +1,22 @@
 package com.search.search.board.presentation;
 
-import com.search.search.board.presentation.request.UpdateBoardRequest;
+import static com.search.search.util.PageUtils.PAGE_SIZE;
+
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.search.search.board.presentation.dto.BoardDto;
 import com.search.search.board.presentation.request.PublishBoardRequest;
+import com.search.search.board.presentation.request.UpdateBoardRequest;
+import com.search.search.board.presentation.response.BoardsResponse;
 import com.search.search.board.presentation.response.PublishBoardResponse;
 import com.search.search.board.service.BoardService;
 
@@ -19,6 +27,21 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BoardController {
     private final BoardService boardService;
+
+    @GetMapping
+    public ResponseEntity<BoardsResponse> getBoardsByKeyword(
+            @RequestParam("keyword") String keyword,
+            @RequestParam(value = "pageNumber", required = false) Long pageNumber
+    ) {
+        pageNumber = pageNumber == null ? 1L : pageNumber;
+
+        Long boardSize = boardService.getBoardSizeByKeyword(keyword);
+        List<BoardDto> boards = boardService.getBoardsByKeyword(keyword, pageNumber);
+        Boolean hasNext = PAGE_SIZE * pageNumber + boards.size() < boardSize;
+
+        BoardsResponse response = new BoardsResponse(boardSize, pageNumber, hasNext, boards.size(), boards);
+        return ResponseEntity.ok(response);
+    }
 
     @PostMapping
     public ResponseEntity<PublishBoardResponse> publishBoard(
