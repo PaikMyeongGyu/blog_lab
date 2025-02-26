@@ -8,7 +8,9 @@ import static lombok.AccessLevel.PROTECTED;
 import jakarta.persistence.*;
 
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+@ToString
 @Entity
 @NoArgsConstructor(access = PROTECTED)
 @Table(

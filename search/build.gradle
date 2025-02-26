@@ -42,6 +42,13 @@ dependencies {
     // Commons Lang3 설정
     implementation 'org.apache.commons:commons-lang3:3.17.0'
     implementation 'org.apache.commons:commons-collections4:4.4'
+
+//    // fixture monkey 폐기
+//    testRuntimeOnly("org.junit.platform:junit-platform-launcher:{version}")
+//    testImplementation("com.navercorp.fixturemonkey:fixture-monkey-starter:1.1.9")
+//    // JUnit 런타임 의존성
+//    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.8.2'
+
     // 롬복 관련 설정
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
