@@ -54,20 +54,21 @@ class BoardDescriptionTest {
             "모델뷰컨트롤러패턴", "지속적인통합환경", "프로세스자동화도구", "테스트주도개발방법론", "시스템통합테스트환경", "소프트웨어성능테스트", "데이터웨어하우스모델링", "클라이언트서버아키텍처", "이벤트드리븐아키텍처", "소프트웨어요구사항분석"
     );
 
-    @Test
-    void test() {
-        List<String> titles = new ArrayList<>();
-        for (int i = 0; i < 1000000; i++) {
-            if (i > 0 && i % 1000 == 0) {
-                boardDummyService.insertThousandData(titles);
-                titles.clear();
-            }
-            String word1 = front.get((i / 10000) % 100);
-            String word2 = middle.get((i / 100) % 100);
-            String word3 = last.get(i % 100);
+        @Test
+        void test() {
+            for (int i = 0; i < 1000000; i++) {
+                if (i > 0 && i % 500 == 0) {
+                    List<String> titles = new ArrayList<>();
+                    for (int j = 500; j > 0; j--) {
+                        String word1 = front.get(((i-j)/ 10000) % 100);
+                        String word2 = middle.get(((i-j) / 100) % 100);
+                        String word3 = last.get((i-j) % 100);
 
-            StringBuilder sb = new StringBuilder();
-            titles.add(sb.append(word1).append(word2).append(word3).toString());
+                        StringBuilder sb = new StringBuilder();
+                        titles.add(sb.append(word1).append(" ").append(word2).append(" ").append(word3).toString());
+                    }
+                    boardDummyService.insertThousandData(titles);
+                }
+            }
         }
-    }
 }

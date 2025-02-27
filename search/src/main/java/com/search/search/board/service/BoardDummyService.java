@@ -5,6 +5,7 @@ import static com.search.search.board.domain.BoardDescription.createDescription;
 
 import java.util.List;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +22,7 @@ public class BoardDummyService {
     private final BoardJpaRepository boardJpaRepository;
     private final BoardDescriptionJpaRepository boardDescriptionJpaRepository;
 
+    @Async("boardExecutor")
     @Transactional
     public void insertThousandData(List<String> titles) {
         titles.forEach(title -> {
