@@ -60,7 +60,7 @@ class BoardDescriptionTest {
                 if (i > 0 && i % 500 == 0) {
                     List<String> titles = new ArrayList<>();
                     for (int j = 500; j > 0; j--) {
-                        String word1 = front.get(((i-j)/ 10000) % 100);
+                        String word1 = "우리의";
                         String word2 = middle.get(((i-j) / 100) % 100);
                         String word3 = last.get((i-j) % 100);
 

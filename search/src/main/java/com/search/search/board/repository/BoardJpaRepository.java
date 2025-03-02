@@ -25,6 +25,32 @@ public interface BoardJpaRepository extends JpaRepository<Board, Long> {
     );
 
     @Query(value = """
+        SELECT b.board_id
+        FROM board b
+        WHERE MATCH(b.title) AGAINST(:keyword IN BOOLEAN MODE)
+        ORDER BY b.board_id DESC
+        LIMIT :pageSize OFFSET :pageOffset
+    """, nativeQuery = true)
+    List<Long> fromBoardGetIdByKeyword(
+            @Param("keyword") String keyword,
+            @Param("pageSize") Long pageSize,
+            @Param("pageOffset") Long pageOffset
+    );
+
+    @Query(value = """
+        SELECT bd.board_id
+        FROM board_description bd
+        WHERE MATCH(bd.description) AGAINST(:keyword IN BOOLEAN MODE)
+        ORDER BY bd.board_id DESC
+        LIMIT :pageSize OFFSET :pageOffset
+    """, nativeQuery = true)
+    List<Long> fromDescriptionGetIdByKeyword(
+            @Param("keyword") String keyword,
+            @Param("pageSize") Long pageSize,
+            @Param("pageOffset") Long pageOffset
+    );
+
+    @Query(value = """
         SELECT count(*)
         FROM board b
         JOIN board_description bd 

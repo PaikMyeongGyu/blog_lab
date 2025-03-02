@@ -43,6 +43,25 @@ public class BoardController {
         return ResponseEntity.ok(response);
     }
 
+    @GetMapping("/v2")
+    public ResponseEntity<BoardsResponse> getBoardsByKeywordV2(
+            @RequestParam("keyword") String keyword,
+            @RequestParam(value = "pageNumber", required = false) Long pageNumber
+    ) {
+        pageNumber = pageNumber == null ? 1L : pageNumber;
+
+        List<BoardDto> boards = boardService.getBoardByTitleOrDescription(keyword, pageNumber);
+        Boolean hasNext = boards.size() > PAGE_SIZE;
+        if (hasNext) {
+            boards = boards.stream()
+                            .limit(PAGE_SIZE)
+                            .toList();
+        }
+
+        BoardsResponse response = new BoardsResponse((long)boards.size(), pageNumber, hasNext, boards.size(), boards);
+        return ResponseEntity.ok(response);
+    }
+
     @PostMapping
     public ResponseEntity<PublishBoardResponse> publishBoard(
             @RequestBody PublishBoardRequest req
