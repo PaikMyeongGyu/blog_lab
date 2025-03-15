@@ -14,6 +14,14 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/aop_problem" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/aop_problem" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/geography" />
         <option name="gradleHome" value="$PROJECT_DIR$/../../../../gradle/gradle-8.11.1-all/gradle-8.11.1" />
         <option name="gradleJvm" value="corretto-17" />
@@ -30,6 +38,15 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/oauth2" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/refactoring" />
+        <option name="gradleJvm" value="corretto-17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/refactoring" />
           </set>
         </option>
       </GradleProjectSettings>

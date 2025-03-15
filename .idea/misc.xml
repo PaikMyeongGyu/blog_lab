@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/aop_problem" />
     <file type="web" url="file://$PROJECT_DIR$/DatabaseSelectWithIndex" />
     <file type="web" url="file://$PROJECT_DIR$/geography" />
     <file type="web" url="file://$PROJECT_DIR$/oauth2" />
     <file type="web" url="file://$PROJECT_DIR$/redlock" />
+    <file type="web" url="file://$PROJECT_DIR$/refactoring" />
     <file type="web" url="file://$PROJECT_DIR$/search" />
     <file type="web" url="file://$PROJECT_DIR$/selectWithIndex" />
     <file type="web" url="file://$PROJECT_DIR$/spring_security" />
