@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/blog.iml" filepath="$PROJECT_DIR$/.idea/blog.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/geography.main.iml" filepath="$PROJECT_DIR$/.idea/modules/geography.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/login.main.iml" filepath="$PROJECT_DIR$/.idea/modules/login.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/refactoring.main.iml" filepath="$PROJECT_DIR$/.idea/modules/refactoring.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/search.main.iml" filepath="$PROJECT_DIR$/.idea/modules/search.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/selectWithIndex.main.iml" filepath="$PROJECT_DIR$/.idea/modules/selectWithIndex.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/selectWithIndex.test.iml" filepath="$PROJECT_DIR$/.idea/modules/selectWithIndex.test.iml" />
