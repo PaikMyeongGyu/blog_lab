@@ -80,6 +80,14 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/testcode" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/testcode" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/websocket_chatting" />
         <option name="gradleHome" value="$PROJECT_DIR$/../../../../gradle/gradle-8.11.1-all/gradle-8.11.1" />
         <option name="gradleJvm" value="corretto-17" />

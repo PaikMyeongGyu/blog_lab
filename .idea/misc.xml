@@ -11,6 +11,7 @@
     <file type="web" url="file://$PROJECT_DIR$/search" />
     <file type="web" url="file://$PROJECT_DIR$/selectWithIndex" />
     <file type="web" url="file://$PROJECT_DIR$/spring_security" />
+    <file type="web" url="file://$PROJECT_DIR$/testcode" />
     <file type="web" url="file://$PROJECT_DIR$/websocket_chatting" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="corretto-17" project-jdk-type="JavaSDK">
