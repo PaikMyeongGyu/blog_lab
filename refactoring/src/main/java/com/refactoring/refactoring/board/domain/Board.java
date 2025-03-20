@@ -19,6 +19,7 @@ import lombok.ToString;
 @Table(
         name = "board"
 )
+@ToString
 public class Board {
     @Id @GeneratedValue(strategy = IDENTITY)
     @Column(name = "board_id")

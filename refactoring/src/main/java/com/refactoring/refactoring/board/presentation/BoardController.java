@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.refactoring.refactoring.board.common.PageResponse;
 import com.refactoring.refactoring.board.domain.Board;
 import com.refactoring.refactoring.board.presentation.response.BoardResponse;
 import com.refactoring.refactoring.board.service.BoardService;
@@ -45,5 +46,15 @@ public class BoardController {
         Long lastBoardId = !boards.isEmpty() ? boards.get(boards.size() - 1).getId() : null;
         BoardResponse boardResponse = new BoardResponse(size, hasNext, lastBoardId, boards);
         return ResponseEntity.ok().body(boardResponse);
+    }
+
+    @GetMapping("/v2")
+    public ResponseEntity<PageResponse<Board>> getBoardsByIdDesc2(
+            @RequestParam(value = "boardId", required = false) Long boardId
+    ) {
+        List<Board> boards = boardService.getBoardByIdDesc(boardId, SMALL_PAGE.getSize() + 1);
+        PageResponse<Board> pageResponse = new PageResponse<>(boards, Board::getId, SMALL_PAGE);
+        System.out.println(pageResponse);
+        return ResponseEntity.ok().body(pageResponse);
     }
 }
