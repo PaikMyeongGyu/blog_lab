@@ -49,12 +49,11 @@ public class BoardController {
     }
 
     @GetMapping("/v2")
-    public ResponseEntity<PageResponse<Board>> getBoardsByIdDesc2(
+    public ResponseEntity<PageResponse<Board, Long>> getBoardsByIdDesc2(
             @RequestParam(value = "boardId", required = false) Long boardId
     ) {
         List<Board> boards = boardService.getBoardByIdDesc(boardId, SMALL_PAGE.getSize() + 1);
-        PageResponse<Board> pageResponse = new PageResponse<>(boards, Board::getId, SMALL_PAGE);
-        System.out.println(pageResponse);
+        PageResponse<Board, Long> pageResponse = new PageResponse<>(boards, Board::getId, SMALL_PAGE);
         return ResponseEntity.ok().body(pageResponse);
     }
 }

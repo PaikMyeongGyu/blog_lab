@@ -9,13 +9,13 @@ import java.util.function.Function;
  *
  * 내부에서 값 추출하는 건 T -> R로 바꿔주는 Function 인터페이스를 사용하자.
  */
-public record PageResponse<T>(
+public record PageResponse<T, R>(
         Boolean hasNext,
         Integer size,
         List<T> data,
-        Long lastId
+        R lastId
 ) {
-    public PageResponse(List<T> data, Function<T, Long> extractIdFunction, PageSize pageSize) {
+    public PageResponse(List<T> data, Function<T, R> extractIdFunction, PageSize pageSize) {
         this(
                 data.size() > pageSize.getSize(),
                 Math.min(data.size(), pageSize.getSize()),
