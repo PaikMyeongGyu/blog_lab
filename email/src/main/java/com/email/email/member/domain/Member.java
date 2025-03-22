@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Index;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +19,12 @@ import static lombok.AccessLevel.PROTECTED;
 @Entity
 @Getter
 @NoArgsConstructor(access = PROTECTED)
+@Table(
+        name = "mmeber",
+        indexes = {
+                @Index(name = "idx_member_status_id_desc", columnList = "status, member_id desc")
+        }
+)
 public class Member {
 
     @Id @GeneratedValue(strategy = IDENTITY)
