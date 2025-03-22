@@ -4,6 +4,7 @@
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/aop_problem" />
     <file type="web" url="file://$PROJECT_DIR$/DatabaseSelectWithIndex" />
+    <file type="web" url="file://$PROJECT_DIR$/email" />
     <file type="web" url="file://$PROJECT_DIR$/geography" />
     <file type="web" url="file://$PROJECT_DIR$/oauth2" />
     <file type="web" url="file://$PROJECT_DIR$/redlock" />

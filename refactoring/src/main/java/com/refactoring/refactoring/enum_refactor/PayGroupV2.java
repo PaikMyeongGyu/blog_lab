@@ -1,5 +1,7 @@
 package com.refactoring.refactoring.enum_refactor;
 
+import lombok.Getter;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -11,6 +13,7 @@ import static com.refactoring.refactoring.enum_refactor.PayType.*;
  * 파라미터로 전달된 값이 잘못되었을 경우가 있을 때 전혀 관리가 안된다.
  * 따라서 결제 수단 역시 Enum으로 바꾸어주어야 한다.
  */
+@Getter
 public enum PayGroupV2 {
 
     CASH("현금", Arrays.asList(ACCOUNT_TRANSFER, REMITTANCE, ON_SITE_PAYMENT, TOSS)),
@@ -36,9 +39,5 @@ public enum PayGroupV2 {
     public boolean hasPayCode(PayType payType) {
         return payList.stream()
                 .anyMatch(pay -> pay == payType);
-    }
-
-    public String getTitle() {
-        return title;
     }
 }

@@ -1,6 +1,7 @@
 package com.refactoring.refactoring.board.common;
 
 import java.util.List;
+import java.util.ListIterator;
 import java.util.function.Function;
 
 /**
