@@ -7,7 +7,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${DB_ID}
     password: ${DB_PASSWORD}
-    url: jdbc:mysql://${DB_URL}/search
+    url: jdbc:mysql://${DB_URL}/email
 
   # JPA ?? ??
   jpa:
