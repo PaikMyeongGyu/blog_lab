@@ -49,6 +49,8 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
     // MySQl 데이터베이스 의존성
     runtimeOnly 'com.mysql:mysql-connector-j'
+    // Java Mail Sender 설정
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
 
     // 테스트 코드 의존성
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
