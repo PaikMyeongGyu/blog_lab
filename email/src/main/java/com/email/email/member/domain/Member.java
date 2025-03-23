@@ -20,7 +20,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Getter
 @NoArgsConstructor(access = PROTECTED)
 @Table(
-        name = "mmeber",
+        name = "member",
         indexes = {
                 @Index(name = "idx_member_status_id_desc", columnList = "status, member_id desc")
         }

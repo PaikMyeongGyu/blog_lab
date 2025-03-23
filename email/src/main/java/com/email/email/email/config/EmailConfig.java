@@ -17,9 +17,6 @@ public class EmailConfig {
     @Value("${app.password}")
     private String EMAIL_PASSWORD;
 
-    public static final String SUBJECT = "인증코드 확인 안내";
-    public static final String AUTH_URL = "http:/localhost:8080/auth/emailVerification/";
-
     @Bean
     public JavaMailSender mailSender() {
 

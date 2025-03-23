@@ -1,5 +1,6 @@
 package com.email.email.member.service;
 
+import com.email.email.email.service.EmailService;
 import com.email.email.member.domain.Email;
 import com.email.email.member.domain.Member;
 import com.email.email.member.domain.repository.MemberJpaRepository;
