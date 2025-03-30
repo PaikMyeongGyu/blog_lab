@@ -15,9 +15,9 @@ import static java.time.temporal.ChronoUnit.MINUTES;
 public class ScheduleService {
     private final ScheduleJpaRepository scheduleJpaRepository;
 
-    public Long createSchedule(Long memberId, String content) {
-        LocalDateTime currentTime = LocalDateTime.now().truncatedTo(MINUTES);
-        Schedule schedule = Schedule.of(memberId, content, currentTime);
+    public Long createSchedule(Long memberId, String content, LocalDateTime scheduleTime) {
+        scheduleTime = scheduleTime.truncatedTo(MINUTES);
+        Schedule schedule = Schedule.of(memberId, content, scheduleTime);
         scheduleJpaRepository.save(schedule);
 
         return schedule.getId();

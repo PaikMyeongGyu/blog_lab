@@ -23,7 +23,7 @@ import static lombok.AccessLevel.PROTECTED;
 @Table(
         name = "schedule",
         indexes = {
-                @Index(name = "idx_schedule_status_time_desc", columnList = "status, schedule_time desc")
+                @Index(name = "idx_schedule_status_time_id", columnList = "status, schedule_time, schedule_id desc")
         }
 )
 public class Schedule {
