@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+import static com.alarm.alarm.schedule.domain.ScheduleStatus.CLOSED;
 import static com.alarm.alarm.schedule.domain.ScheduleStatus.OPENED;
 import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -23,7 +24,8 @@ import static lombok.AccessLevel.PROTECTED;
 @Table(
         name = "schedule",
         indexes = {
-                @Index(name = "idx_schedule_status_time_id", columnList = "status, schedule_time, schedule_id desc")
+                @Index(name = "idx_schedule_status_time_desc", columnList = "status, schedule_time desc"),
+                @Index(name = "idx_schedule_status_id_desc", columnList = "status, schedule_id desc")
         }
 )
 public class Schedule {
@@ -49,6 +51,10 @@ public class Schedule {
         this.content = content;
         this.scheduleTime = scheduleTime;
         this.status = OPENED;
+    }
+
+    public void closeSchedule() {
+        this.status = CLOSED;
     }
 
     public static Schedule of(Long memberId, String content, LocalDateTime scheduleTime) {

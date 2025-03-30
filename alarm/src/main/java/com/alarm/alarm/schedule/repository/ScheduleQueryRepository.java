@@ -18,7 +18,17 @@ import static com.alarm.alarm.schedule.domain.ScheduleStatus.OPENED;
 public class ScheduleQueryRepository {
     private final JPAQueryFactory queryFactory;
 
-    public List<Schedule> getOpenedScheduleByTimeAndIdDesc(LocalDateTime time, Long lastScheduleId) {
+    public List<Schedule> getOpenedScheduleByTimeDesc(LocalDateTime time) {
+        return queryFactory
+                .select(schedule)
+                .from(schedule)
+                .where(schedule.status.eq(OPENED), schedule.scheduleTime.lt(time))
+                .orderBy(schedule.id.desc())
+                .limit(PAGE_SIZE.getPageSize())
+                .fetch();
+    }
+
+    public List<Schedule> getOpenedScheduleByIdDesc(Long lastScheduleId) {
         BooleanBuilder scheduleIdLt = new BooleanBuilder();
         if (lastScheduleId != null) {
             scheduleIdLt.and(schedule.id.lt(lastScheduleId));
@@ -27,7 +37,7 @@ public class ScheduleQueryRepository {
         return queryFactory
                 .select(schedule)
                 .from(schedule)
-                .where(schedule.status.eq(OPENED), schedule.scheduleTime.eq(time), scheduleIdLt)
+                .where(schedule.status.eq(OPENED), scheduleIdLt)
                 .orderBy(schedule.id.desc())
                 .limit(PAGE_SIZE.getPageSize())
                 .fetch();
