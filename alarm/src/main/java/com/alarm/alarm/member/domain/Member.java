@@ -1,4 +1,4 @@
-package com.alarm.alarm.member;
+package com.alarm.alarm.member.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,6 +22,7 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
+    @Column(name = "name", unique = true)
     private String name;
 
     private Member(String name) {

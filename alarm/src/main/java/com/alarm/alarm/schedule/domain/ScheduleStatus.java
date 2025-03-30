@@ -1,4 +1,4 @@
-package com.alarm.alarm.schedule;
+package com.alarm.alarm.schedule.domain;
 
 /**
  * OPENED : 아직 시작하지 않은 스케줄이라는 의미

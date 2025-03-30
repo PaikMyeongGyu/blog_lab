@@ -1,4 +1,4 @@
-package com.alarm.alarm.alarm;
+package com.alarm.alarm.alarm.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

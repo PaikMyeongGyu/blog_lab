@@ -1,4 +1,4 @@
-package com.alarm.alarm.schedule;
+package com.alarm.alarm.schedule.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-import static com.alarm.alarm.schedule.ScheduleStatus.OPENED;
+import static com.alarm.alarm.schedule.domain.ScheduleStatus.OPENED;
 import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static lombok.AccessLevel.PROTECTED;
