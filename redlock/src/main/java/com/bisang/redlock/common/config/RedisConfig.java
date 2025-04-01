@@ -1,5 +1,8 @@
 package com.bisang.redlock.common.config;
 
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +14,9 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 @Configuration
 public class RedisConfig {
+
+    private static final String ADDRESS_FORMAT = "%s%s:%s";
+    private static final String REDISSON_HOST_PREFIX = "redis://";
 
     @Value("${spring.data.redis.host}")
     private String host;
@@ -42,5 +48,12 @@ public class RedisConfig {
         redisTemplate.setHashValueSerializer(new GenericJackson2JsonRedisSerializer());
 
         return redisTemplate;
+    }
+
+    @Bean
+    public RedissonClient redissonClient() {
+        Config config = new Config();
+        config.useSingleServer().setAddress(String.format(ADDRESS_FORMAT, REDISSON_HOST_PREFIX, host, port));
+        return Redisson.create(config);
     }
 }

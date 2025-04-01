@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/alarm/alarm.iml" filepath="$PROJECT_DIR$/alarm/alarm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/alarm.main.iml" filepath="$PROJECT_DIR$/.idea/modules/alarm.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/blog.iml" filepath="$PROJECT_DIR$/.idea/blog.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/email.main.iml" filepath="$PROJECT_DIR$/.idea/modules/email.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/geography.main.iml" filepath="$PROJECT_DIR$/.idea/modules/geography.main.iml" />
