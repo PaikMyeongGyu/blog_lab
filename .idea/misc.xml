@@ -8,6 +8,7 @@
     <file type="web" url="file://$PROJECT_DIR$/email" />
     <file type="web" url="file://$PROJECT_DIR$/geography" />
     <file type="web" url="file://$PROJECT_DIR$/oauth2" />
+    <file type="web" url="file://$PROJECT_DIR$/redis-cache" />
     <file type="web" url="file://$PROJECT_DIR$/redlock" />
     <file type="web" url="file://$PROJECT_DIR$/refactoring" />
     <file type="web" url="file://$PROJECT_DIR$/search" />

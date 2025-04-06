@@ -58,6 +58,14 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/redis-cache" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/redis-cache" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/refactoring" />
         <option name="modules">
           <set>

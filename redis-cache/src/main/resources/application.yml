@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: redis-cache
+
+  # MySQL
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/cache?socketTimeout=2000
+    hikari:
+      connection-timeout: 3000
+
+  # JPA
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: false
+        use_sql_comments: false
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+  cache:
+    type: redis
+  data:
+    redis:
+      host: localhost
+      port: 6379
