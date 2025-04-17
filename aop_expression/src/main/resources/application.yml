@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: aop_expression
+
+  # MySQL
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/aopexp?socketTimeout=2000
+    hikari:
+      connection-timeout: 3000
+
+  # JPA
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: false
+        use_sql_comments: false
+    database-platform: org.hibernate.dialect.MySQLDialect
