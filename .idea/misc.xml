@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/alarm" />
+    <file type="web" url="file://$PROJECT_DIR$/aop_expression" />
     <file type="web" url="file://$PROJECT_DIR$/aop_problem" />
     <file type="web" url="file://$PROJECT_DIR$/DatabaseSelectWithIndex" />
     <file type="web" url="file://$PROJECT_DIR$/email" />
